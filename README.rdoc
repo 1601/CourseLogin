@@ -1,0 +1,4 @@
+Gumagana lng ung nav drawer sa default orientation ng device. for example  phone so default is portrait.
+to activate the nav bar slide starting from the left to the right from the end of your left screen. TY.
+
+Prototype. Proof of Concept. CourseLogin.
