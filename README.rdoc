@@ -1,4 +1,6 @@
-Gumagana lng ung nav drawer sa default orientation ng device. for example  phone so default is portrait.
-to activate the nav bar slide starting from the left to the right from the end of your left screen. TY.
-
+Splash Screen --> mainActivity that allows to "Start Attendance Check",
+also navDrawer can be toggled from here via buttonClick or 'left end of screen to right gesture'.
+navDrawer contains instructor details, his class list and his schedule. 
 Prototype. Proof of Concept. CourseLogin.
+
+Update: navDrawer toggle button and gesture working.
