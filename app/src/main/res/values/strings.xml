@@ -13,6 +13,9 @@
     <string name="add_menu">Add Schedule</string>
     <string name="labelCourse">Course:</string>
     <string name="labelSection">Section:</string>
+    <string name="NavDrawerDes">Slide the screen from left end to the right</string>
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
 
     <string-array name="course_array">
         <item>MATH324</item>

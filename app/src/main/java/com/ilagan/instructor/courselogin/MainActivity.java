@@ -3,10 +3,14 @@ package com.ilagan.instructor.courselogin;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +20,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,10 +32,26 @@ import java.text.DateFormat;
 
 public class MainActivity extends Activity {
 
+
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
+
+        final DrawerLayout mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        Button navDrawButton = (Button) findViewById(R.id.navDrawer);
+        navDrawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
 
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         TextView timeDate_main = (TextView)findViewById(R.id.timeDate_main);
@@ -60,20 +82,23 @@ public class MainActivity extends Activity {
         myThread.start();
     }
 
+
     public void doWork() {
         runOnUiThread(new Runnable() {
             public void run() {
-                try{
-                    TextView txtCurrentTime= (TextView)findViewById(R.id.timeDate_main);
+                try {
+                    TextView txtCurrentTime = (TextView) findViewById(R.id.timeDate_main);
                     String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
                     Date dt = new Date();
                     long time = dt.getTime();
                     String timeSt = String.valueOf(time);
                     txtCurrentTime.setText(currentDateTimeString);
-                }catch (Exception e) {}
+                } catch (Exception e) {
+                }
             }
         });
     }
+
 
 
     class CountDownRunner implements Runnable{
@@ -142,9 +167,27 @@ public class MainActivity extends Activity {
         else if (id == R.id.action_settings){
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged()...
+     */
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+       // mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
     /**
      * A placeholder fragment containing a simple view.
      */

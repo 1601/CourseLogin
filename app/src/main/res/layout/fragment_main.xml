@@ -248,7 +248,9 @@
                 android:id="@+id/navDrawer"
                 android:background="@drawable/ic_drawer"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/NavDrawerDes"
+                android:onClick="onNavDrawerClick"/>
 
         </RelativeLayout>
 
